@@ -41,9 +41,14 @@
         <td>
             {{ task.name }}
         </td>
-        <td>
-            {{ task.priority }}
-        </td>
+        {% if task.priority == 1 %}
+            <td> HIGH
+        {% elif task.priority == 2 %}
+            <td>MEDIUM
+        {% else %}
+            <td>LOW
+            {% endif %}
+            </td>
         <td>
             {{ task.create_date }}
         </td>
