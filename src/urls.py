@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from todo.views import main, create_task, get_tasks, edit_task, delete_task,\
     task_up_down, mr_redirect, task_completed, filter_by_priority
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +31,5 @@ urlpatterns = [
     path('completed/<int:task_id>', task_completed, name='task_completed'),
     path('redirect/<int:task_id>', mr_redirect, name='mr_redirect'),
     path('filter_by_priority/', filter_by_priority, name='filter_by_priority'),
-]
+] + static(settings.MEDIA_URL,
+           document_root=settings.MEDIA_ROOT)
