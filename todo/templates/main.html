@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Main {% endblock %}
+
+{% block body %}
+<p>WELCOME!</p>
+    <form method="post" action="{% url 'get_tasks' %}">
+        <button type="submit">Check tasks</button>
+    </form>
+<br>
+    <form method="get" action="{% url 'create_task' %}">
+        <button >Create new task</button>
+    </form>
+{% endblock %}

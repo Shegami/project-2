@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} get {% endblock %}
+
+{% block body %}
+    <p>ALL TASKS!</p>
+    <a href="{% url 'main' %}">
+        <button>Back to main</button>
+    </a>
+<table style="width:100%" border="0">
+    <caption>TASKS</caption>
+    <tr>
+        <td align="center" bgcolor="#c0c0c0">ACTION</td>
+        <td align="center" bgcolor="#c0c0c0">TASK NAME</td>
+        <td align="center" bgcolor="#c0c0c0">
+            <form method="post" action="{% url 'filter_by_priority' %}">
+                <button name="button" value="H-L">H-L</button>
+                    PRIORITY
+                <button name="button" value="L-H">L-H</button>
+            </form>
+        </td>
+        <td align="center" bgcolor="#c0c0c0">DATE</td>
+    </tr>
+    {% for task in tasks %}
+    {% if task.priority == 1 %}
+        <tr align="center" bgcolor="b43c3c">
+            {% elif task.priority == 2 %}
+        <tr align="center" bgcolor="b48a3c">
+            {% else %}
+        <tr align="center" bgcolor="32956c">
+            {% endif %}
+        <td>
+            <form method="post" action="{% url 'mr_redirect' task.id %}">
+                <button name="button" type="submit" value="edit">Edit</button>
+                <button name="button" value="delete">Delete</button>
+                <button name="button" value="up">Up</button>
+                <button name="button" value="down">Down</button>
+                <button name="button" value="completed">Complete</button>
+            </form>
+        </td>
+        <td>
+            {{ task.name }}
+        </td>
+        <td>
+            {{ task.priority }}
+        </td>
+        <td>
+            {{ task.create_date }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
