@@ -44,7 +44,7 @@ To get a local copy up and running follow these simple steps.
 
 * pip
 
-Wnindows OS:
+Windows OS:
   ```sh
   python -m pip install --upgrade pip
   ```
@@ -60,7 +60,7 @@ Linux OS:
    ```sh
    git clone git@github.com:Shegami/project-2.git
    ```
-2. Install necesarry packages
+2. Install necessary packages
    ```sh
    pip install -r requirements.txt
    ```
